@@ -14,16 +14,9 @@ const links = [
 export default function NavigationLinks() {
   return (
     <>
-      <Navbar.Toggle
-        aria-controls="navbarNavDropdown"
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-label="Toggle navigation"
-      ></Navbar.Toggle>
-      <Navbar.Collapse id="navbarNavDropdown" className="ms-auto">
-        <Nav className="navbar-nav">
+      <Navbar.Toggle className="coloring"></Navbar.Toggle>
+      <Navbar.Collapse id="navbarNavDropdown">
+        <Nav>
           {links.map((ele, i) => (
             <MainNavLink href={ele.linkHref} label={ele.linkLabel} key={i} />
           ))}

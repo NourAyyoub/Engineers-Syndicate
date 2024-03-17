@@ -1,8 +1,8 @@
-import Navigationbar from "./components/NavbarFile/Navigationbar.jsx";
+import ProjectsTable from "./components/ProjectsTable/ProjectsTable";
 export default function App() {
   return (
     <div>
-      <Navigationbar />
+      <ProjectsTable />
     </div>
   );
 }
