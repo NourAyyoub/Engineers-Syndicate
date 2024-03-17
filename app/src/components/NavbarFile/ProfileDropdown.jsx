@@ -11,11 +11,7 @@ const items = [
 ];
 export default function ProfileDropdown() {
   return (
-    <NavDropdown
-      title="حسابي"
-      id="navbarDropdownMenuLink"
-      className="nav-item dropdown"
-    >
+    <NavDropdown title="حسابي" id="navbarDropdownMenuLink">
       {items.map((ele, i) => (
         <NavDropdown.Item
           href={ele.itemHrefHref}
