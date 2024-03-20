@@ -10,6 +10,7 @@ export default function Navigationbar() {
       variant="dark"
       sticky="top"
       expand="sm"
+      className="rounded-bottom"
       collapseOnSelect
     >
       {/* <NavigationLinks /> */}
