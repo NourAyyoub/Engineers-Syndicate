@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import { Col, Container, Row, Button } from "react-bootstrap";
+import { Col, Row, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 Input.propTypes = {
   id: PropTypes.string.isRequired,
@@ -59,7 +59,7 @@ const specialties = [
 export default function AddNewProject() {
   const handleSendData = () => {};
   return (
-    <Container className="container-xl mt-4 mb-4 mx-auto text-center">
+    <>
       <h1>إنشاء مشروع جديد</h1>
       <Row className="align-items-center border border-5 p-4 mb-4 rounded">
         <Basic_information_inputs />
@@ -78,7 +78,7 @@ export default function AddNewProject() {
       </Row>
 
       <Button onClick={handleSendData}>إنشاء المشروع</Button>
-    </Container>
+    </>
   );
 }
 

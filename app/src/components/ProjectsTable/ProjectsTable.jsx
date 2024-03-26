@@ -213,28 +213,29 @@ export default function ProjectsTable() {
         <table className="table table-striped table-bordered text-center align-middle">
           <thead>
             <tr>
-              <th scope="col">اسم المكتب الهندسي المصمم</th>
-              <th scope="col">المساحة (متر مربع)</th>
-              <th scope="col">المنطقة</th>
-              <th scope="col">الحوض</th>
-              <th scope="col">القطعة</th>
-              <th scope="col">المحافظة</th>
-              <th scope="col">اسم المشروع</th>
+              <th scope="col">#</th>
               <th scope="col">رقم المشروع</th>
+              <th scope="col">اسم المشروع</th>
+              <th scope="col">المحافظة</th>
+              <th scope="col">القطعة</th>
+              <th scope="col">الحوض</th>
+              <th scope="col">المنطقة</th>
+              <th scope="col">المساحة (متر مربع)</th>
+              <th scope="col">اسم المكتب الهندسي المصمم</th>
             </tr>
           </thead>
           <tbody>
             {filteredProjects.map((project, index) => (
               <tr key={project.project_number}>
-                <td>{project.designing_engineering_office}</td>
-                <td>{project.area}</td>
-                <td>{project.region}</td>
-                <td>{project.the_basin}</td>
-                <td>{project.widget}</td>
-                <td>{project.governorate}</td>
-                <td>{project.project_name}</td>
-                <td>{project.project_number}</td>
                 <td>{index + 1}</td>
+                <td>{project.project_number}</td>
+                <td>{project.project_name}</td>
+                <td>{project.governorate}</td>
+                <td>{project.widget}</td>
+                <td>{project.the_basin}</td>
+                <td>{project.region}</td>
+                <td>{project.area}</td>
+                <td>{project.designing_engineering_office}</td>
               </tr>
             ))}
           </tbody>
