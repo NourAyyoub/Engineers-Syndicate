@@ -1,12 +1,14 @@
 import AddNewProject from "./components/AddNewProject/AddNewProject";
+import { Container } from "react-bootstrap";
+import ProjectInfo from "./components/ProjectInfo/ProjectInfo";
 
-// import ProjectsTable from "./components/ProjectsTable/ProjectsTable";
+import ProjectsTable from "./components/ProjectsTable/ProjectsTable";
 export default function App() {
   return (
-    <div>
+    <Container dir="rtl" className="container-xl mt-4 mb-4 mx-auto text-center">
       {/* <ProjectsTable /> */}
-
-      <AddNewProject />
-    </div>
+      <ProjectInfo />
+      {/* <AddNewProject /> */}
+    </Container>
   );
 }
