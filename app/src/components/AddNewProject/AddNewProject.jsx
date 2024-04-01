@@ -11,7 +11,7 @@ OptionForInputSelect.propTypes = {
   label: PropTypes.string.isRequired,
 };
 InputSelect.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   list: PropTypes.array.isRequired,
 };
 OptionInputRadio.propTypes = {
@@ -82,7 +82,7 @@ export default function AddNewProject() {
   );
 }
 
-function Input({ label, id, type = "text" }) {
+export function Input({ label, id, type = "text" }) {
   return (
     <div>
       <Form.Label htmlFor={id}>{label}</Form.Label>
@@ -91,7 +91,7 @@ function Input({ label, id, type = "text" }) {
     </div>
   );
 }
-function InputSelect({ label, list }) {
+export function InputSelect({ label, list }) {
   return (
     <>
       <Form.Label>{label}</Form.Label>
@@ -107,10 +107,10 @@ function InputSelect({ label, list }) {
     </>
   );
 }
-function OptionForInputSelect({ label, value }) {
+export function OptionForInputSelect({ label, value }) {
   return <option value={value}>{label}</option>;
 }
-function InputRadio({ name, list }) {
+export function InputRadio({ name, list }) {
   return (
     <Form>
       {list.map((ele) => (
@@ -124,10 +124,10 @@ function InputRadio({ name, list }) {
     </Form>
   );
 }
-function OptionInputRadio({ label, id, name }) {
+export function OptionInputRadio({ label, id, name }) {
   return <Form.Check inline type="radio" label={label} id={id} name={name} />;
 }
-function InputSpecialties({ label, specialty }) {
+export function InputSpecialties({ label, specialty }) {
   return (
     <Col xs={12} md={6} lg={4} className="border border-3 p-4 m-4">
       <Input label={label} id={specialty} />

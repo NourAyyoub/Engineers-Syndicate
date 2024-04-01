@@ -1,9 +1,12 @@
-import { Container, Table } from "react-bootstrap";
-
+import { Container, Table, Form } from "react-bootstrap";
+import { Input, InputSelect } from "../AddNewProject/AddNewProject";
 import PropTypes from "prop-types";
 VisitForm.propTypes = {
   title: PropTypes.string.isRequired,
   list: PropTypes.string.isRequired,
+};
+InputTextArea.propTypes = {
+  label: PropTypes.string,
 };
 const checkTheEquipment = [
   { label: "مكتب خاص بالإشراف", check: "special_supervision_office" },
@@ -47,9 +50,14 @@ const checkSupervisionCrewEquipments = [
     check: "safety_supplies_and_first_aid_kits",
   },
 ];
+const existOrNot = [
+  { label: "إختر", id: "-1" },
+  { label: "موجود", id: "1" },
+  { label: "غير موجود", id: "0" },
+];
 export default function AddNewVisit() {
   return (
-    <Container dir="rtl" className="container-xl mt-4 mb-4 mx-auto text-center">
+    <Container dir="rtl" className="container-xl  mt-4 mb-4 text-center">
       <DateTimePickerComponent />
       <VisitForm title="تجهيزات الموقع" list={checkTheEquipment} />
       <VisitForm
@@ -60,42 +68,63 @@ export default function AddNewVisit() {
         title="تجهيز مقر طاقم الإشراف"
         list={checkSupervisionCrewEquipments}
       />
+      <InputTextArea label="مطالعات جهة الترخيص: بلدية" />
+      <InputTextArea label="مطالعات وزارة العمل" />
+      <InputTextArea label="عند زيارة (المشروع) المذكور أعلاه بحضور اعضاء لجنة الكشف تبين لنا التالي:" />
+      <InputTextArea label="ملاحظات نهائية عن وضع المشروع:" />
+      <Names />
     </Container>
   );
 }
 function VisitForm({ title, list }) {
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th colSpan={4}>{title}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.map((ele, index) => (
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>{ele.label}</td>
-            <td>{ele.check}</td>
-            <td>{ele.check}</td>
+    <Container className="border border-5 mt-5 mb-6">
+      <Table className="table table-striped table-responsive table-bordered  table-sm">
+        <thead>
+          <tr>
+            <th colSpan={4}>{title}</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {list.map((ele, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{ele.label}</td>
+              <td>{<InputSelect label="" list={existOrNot} />}</td>
+              <td>{<Input label="ملاحظات" />}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <InputTextArea label={` ملاحظات عامة عن ${title}`} />
+    </Container>
   );
 }
 function DateTimePickerComponent() {
   return (
-    <div className="form-outline datetimepicker">
-      <input
-        type="date"
-        className="form-control"
-        value=""
-        id="datetimepickerExample"
-      />
-      <label htmlFor="datetimepickerExample" className="form-label">
-        Select Date and Time
-      </label>
-    </div>
+    <Container>
+      <Input type="date" id="datePicker" />
+      <Input type="time" id="TimePicker" />
+    </Container>
+  );
+}
+function InputTextArea({ label }) {
+  return (
+    <Container className="border border-3 mt-5 ">
+      <Form.Group className="mb-3">
+        <Form.Label>{label}</Form.Label>
+        <Form.Control as="textarea" />
+      </Form.Group>
+    </Container>
+  );
+}
+function Names() {
+  return (
+    <Container className="border border-3 mt-5 ">
+      <Input label="الاسم الأول" id="name1" />
+      <Input label="الاسم الثاني" id="name2" />
+      <Input label="الاسم الثالث" id="name3" />
+      <Input label="الاسم الرابع" id="name4" />
+    </Container>
   );
 }
