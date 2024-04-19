@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Container, Row, Col, Form, Table } from "react-bootstrap";
 export default function ProjectsTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("project_number");
@@ -176,27 +177,17 @@ export default function ProjectsTable() {
   );
 
   const searchTypes = [
-    { value: "project_number", label: "'البحث حسب 'رقم المشروع" },
-    { value: "project_name", label: "'البحث حسب 'اسم المشروع" },
-    { value: "governorate", label: "'البحث حسب 'المحافظة" },
+    { value: "project_number", label: "البحث حسب رقم المشروع" },
+    { value: "project_name", label: "البحث حسب اسم المشروع" },
+    { value: "governorate", label: "البحث حسب المحافظة" },
   ];
 
   return (
-    <div className="container mt-4">
-      <div className="row mb-3">
-        <div className="col-md-6 mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="ابحث هنا..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="col-md-6 mb-3">
-          <select
+    <Container className="mt-4">
+      <Row className="mb-3">
+        <Col md={6} className="mb-3">
+          <Form.Select
             id="searchType"
-            className="form-select"
             value={searchType}
             onChange={(e) => setSearchType(e.target.value)}
           >
@@ -205,23 +196,31 @@ export default function ProjectsTable() {
                 {type.label}
               </option>
             ))}
-          </select>
-        </div>
-      </div>
+          </Form.Select>
+        </Col>
+        <Col md={6} className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="ابحث هنا..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </Col>
+      </Row>
 
-      <div className="table-responsive" style={{ overflow: "scroll" }}>
-        <table className="table table-striped table-bordered text-center align-middle">
+      <div style={{ overflow: "scroll" }}>
+        <Table striped bordered className="text-center align-middle">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">رقم المشروع</th>
-              <th scope="col">اسم المشروع</th>
-              <th scope="col">المحافظة</th>
-              <th scope="col">القطعة</th>
-              <th scope="col">الحوض</th>
-              <th scope="col">المنطقة</th>
-              <th scope="col">المساحة (متر مربع)</th>
-              <th scope="col">اسم المكتب الهندسي المصمم</th>
+              <th>#</th>
+              <th>رقم المشروع</th>
+              <th>اسم المشروع</th>
+              <th>المحافظة</th>
+              <th>القطعة</th>
+              <th>الحوض</th>
+              <th>المنطقة</th>
+              <th>المساحة (متر مربع)</th>
+              <th>اسم المكتب الهندسي المصمم</th>
             </tr>
           </thead>
           <tbody>
@@ -239,8 +238,8 @@ export default function ProjectsTable() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       </div>
-    </div>
+    </Container>
   );
 }
