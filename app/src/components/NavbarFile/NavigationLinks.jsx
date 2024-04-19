@@ -3,11 +3,15 @@ import MainNavLink from "./MainNavLink";
 import ProfileDropdown from "./ProfileDropdown";
 const links = [
   {
-    linkLabel: "إحصائيات",
+    linkLabel: "رئيسية",
     linkHref: "#",
   },
   {
-    linkLabel: "رئيسية",
+    linkLabel: " مشروع جديد",
+    linkHref: "#",
+  },
+  {
+    linkLabel: "إحصائيات",
     linkHref: "#",
   },
 ];
