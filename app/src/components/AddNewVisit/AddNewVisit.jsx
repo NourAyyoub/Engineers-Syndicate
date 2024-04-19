@@ -5,6 +5,10 @@ VisitForm.propTypes = {
   title: PropTypes.string.isRequired,
   list: PropTypes.string.isRequired,
 };
+TableVisitForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  list: PropTypes.string.isRequired,
+};
 InputTextArea.propTypes = {
   label: PropTypes.string,
 };
@@ -57,7 +61,7 @@ const existOrNot = [
 ];
 export default function AddNewVisit() {
   return (
-    <Container dir="rtl" className="container-xl  mt-4 mb-4 text-center">
+    <Container className="mt-4 mb-4 text-center">
       <DateTimePickerComponent />
       <VisitForm title="تجهيزات الموقع" list={checkTheEquipment} />
       <VisitForm
@@ -66,6 +70,10 @@ export default function AddNewVisit() {
       />
       <VisitForm
         title="تجهيز مقر طاقم الإشراف"
+        list={checkSupervisionCrewEquipments}
+      />
+      <TableVisitForm
+        title="جدول تجريبي"
         list={checkSupervisionCrewEquipments}
       />
       <InputTextArea label="مطالعات جهة الترخيص: بلدية" />
@@ -78,26 +86,31 @@ export default function AddNewVisit() {
 }
 function VisitForm({ title, list }) {
   return (
-    <Container className="border border-5 mt-5 mb-6">
-      <Table className="table table-striped table-responsive table-bordered  table-sm">
-        <thead>
-          <tr>
-            <th colSpan={4}>{title}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((ele, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{ele.label}</td>
-              <td>{<InputSelect label="" list={existOrNot} />}</td>
-              <td>{<Input label="ملاحظات" />}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+    <Container className="mt-5 mb-6">
+      <TableVisitForm title={title} list={list} />
       <InputTextArea label={` ملاحظات عامة عن ${title}`} />
     </Container>
+  );
+}
+function TableVisitForm({ title, list }) {
+  return (
+    <Table className="table table-striped table-responsive table-bordered  table-sm mt-5 mb-6">
+      <thead>
+        <tr>
+          <th colSpan={4}>{title}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {list.map((ele, index) => (
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{ele.label}</td>
+            <td>{<InputSelect label="" list={existOrNot} />}</td>
+            <td>{<Input label="ملاحظات" />}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
   );
 }
 function DateTimePickerComponent() {
@@ -110,7 +123,7 @@ function DateTimePickerComponent() {
 }
 function InputTextArea({ label }) {
   return (
-    <Container className="border border-3 mt-5 ">
+    <Container className=" mt-5 ">
       <Form.Group className="mb-3">
         <Form.Label>{label}</Form.Label>
         <Form.Control as="textarea" />
@@ -120,7 +133,7 @@ function InputTextArea({ label }) {
 }
 function Names() {
   return (
-    <Container className="border border-3 mt-5 ">
+    <Container className="mt-5 ">
       <Input label="الاسم الأول" id="name1" />
       <Input label="الاسم الثاني" id="name2" />
       <Input label="الاسم الثالث" id="name3" />
