@@ -78,42 +78,40 @@ const vists = [
 ];
 export default function ProjectInfo() {
   return (
-    <>
+    <Container>
       <InfoTable />
       <Buttons />
       <VistsTable />
-    </>
+    </Container>
   );
 }
 function InfoTable() {
   return (
-    <>
-      <Card className="shadow-lg p-3 mb-5 bg-white rounded">
-        <Card.Body>
-          <Card.Title className="text-primary fs-1">
-            {project.project_name}
-          </Card.Title>
-          <Card.Text>
-            <p>رقم المشروع: {project.project_number}</p>
-            <p>المحافظة: {project.governorate}</p>
-            <p>مكتب الهندسة المصمم: {project.designing_engineering_office}</p>
-            <p>القطعة: {project.widget}</p>
-            <p>الحوض: {project.the_basin}</p>
-            <p>المنطقة: {project.region}</p>
-            <p>مساحة المشروع: {project.area}</p>
-            <p>حالة المشروع: {project.project_status}</p>
-            <p>اسم المختبر: {project.Laboratory_name}</p>
-            <p>اسم المهندس: {project.engineer_name}</p>
-            <p>اسم المقاول: {project.contractor_name}</p>
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </>
+    <Card className="shadow-lg p-3 m-5 bg-white rounded">
+      <Card.Body>
+        <Card.Title className="text-primary fs-1 mb-5">
+          {project.project_name}
+        </Card.Title>
+        <Card.Text className="fs-5">
+          <p>رقم المشروع: {project.project_number}</p>
+          <p>المحافظة: {project.governorate}</p>
+          <p>مكتب الهندسة المصمم: {project.designing_engineering_office}</p>
+          <p>القطعة: {project.widget}</p>
+          <p>الحوض: {project.the_basin}</p>
+          <p>المنطقة: {project.region}</p>
+          <p>مساحة المشروع: {project.area}</p>
+          <p>حالة المشروع: {project.project_status}</p>
+          <p>اسم المختبر: {project.Laboratory_name}</p>
+          <p>اسم المهندس: {project.engineer_name}</p>
+          <p>اسم المقاول: {project.contractor_name}</p>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 }
 function Buttons() {
   return (
-    <Container>
+    <Container className="m-3">
       <Button variant="primary">إنشاء زيارة جديدة</Button>
       <Button variant="primary" className="m-2">
         تعديل بيانات المشروع
