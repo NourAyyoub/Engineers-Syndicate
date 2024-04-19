@@ -7,6 +7,10 @@ const links = [
     linkHref: "#",
   },
   {
+    linkLabel: " مشروع جديد",
+    linkHref: "#",
+  },
+  {
     linkLabel: "إحصائيات",
     linkHref: "#",
   },
